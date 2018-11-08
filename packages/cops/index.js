@@ -1,10 +1,10 @@
 //Set Cop Levels
 
-mp.events.addCommand( 'coplevel', ( player, num ) => {
-    if ( !num || isNaN( num ) ) return player.outputChatBox( 'SYNTAX: /coplevel [level]' );
-    player.data.copLevel = num;
-    player.outputChatBox( "Coplevel Updated" );
-} );
+mp.events.addCommand('coplevel', (player, num) => {
+    if(!num || isNaN(num)) return player.outputChatBox('SYNTAX: /coplevel [level]');
+            player.data.coplevel = num;
+            player.outputChatBox("Coplevel Updated");
+});
 
 //Sets a blip on the map so you see the location
 
@@ -37,10 +37,11 @@ mp.events.add( "playerEnterCheckpoint", ( player, checkpoint ) => {
 
         if ( player.data.copLevel > 0 ) { // This var checks if you have coplevel greater then 0 which comes out of database on player login
 
-            // Coplevel 1 = Rekrut
-
             // Remove all weapons
             player.removeAllWeapons();
+            // assault rifle
+            //player.giveWeapon( 0xFAD1F1C9, 200 );
+            
             // assault tonfa
             player.giveWeapon( 0x678B81B1, 200 );
             // assault tazer
@@ -51,97 +52,15 @@ mp.events.add( "playerEnterCheckpoint", ( player, checkpoint ) => {
             player.setClothes( 6, 25, 0, 2 );
             player.setClothes( 4, 35, 0, 2 );
             player.setClothes( 11, 55, 0, 2 );
-
-            if ( player.data.copLevel > 1 ) {
-
-                // Coplevel 2 = Police Cadet
-
-                // pistol
-                player.giveWeapon( 0xBFE256D4, 24 );
-
-            }
-
-            if ( player.data.copLevel > 2 ) {
-
-                // Coplevel 3 = Police Officer
-
-                // Shotgun
-                player.giveWeapon( 0x1D073A89, 8 );
-
-            }
-
-            if ( player.data.copLevel > 3 ) {
-
-                // Coplevel 4 = Detective
-
-                // 3 Extra Magazine für die Pistole
-                player.giveWeapon( 0xBFE256D4, 36 );
-            }
-
-            if ( player.data.copLevel > 4 ) {
-
-                // Coplevel 5 = Sergant
-
-                // 1 extra Magazin für die Shotgun
-                player.giveWeapon( 0x1D073A89, 8 );
-
-            }
-
-            if ( player.data.copLevel > 5 ) {
-
-                // Coplevel 6 = Lieutenant
-
-                // SMG mit 2 Magazinen
-                player.giveWeapon( 0x2BE6766B, 60 );
-                // 1 extra Magazin für die Shotgun
-                player.giveWeapon( 0x1D073A89, 8 );
-
-            }
-
-            if ( player.data.copLevel > 6 ) {
-
-                // Coplevel 7 = Federal Cadet
-
-                // SMG mit 2 Magazinen
-                player.giveWeapon( 0x2BE6766B, 150 );
-
-            }
-
-            if ( player.data.copLevel > 7 ) {
-
-                // Coplevel 8 = Federal Agent
-
-                // Carbine Rifle
-                player.giveWeapon( 0x83BF0278, 150 );
-
-            }
-
-            if ( player.data.copLevel > 8 ) {
-
-                // Coplevel 9 = Director of Federal
-
-                // Special Rifle
-                player.giveWeapon( 0xC0A3098D, 150 );
-
-            }
-
-            if ( player.data.copLevel > 9 ) {
-
-                // Coplevel 10 = Deputy/Assistant Chief
-
-                // Special Carbine Mk II
-                player.giveWeapon( 0x969C3D67, 30 );
-
-            }
-
-            if ( player.data.copLevel > 10 ) {
-
-                // Coplevel 11 = Chief of Police
-
-                // Muskete
-                player.giveWeapon( 0xA89CB99E, 50 );
-
-            }
+			
+			if ( player.data.copLevel > 1 ) {
+				// pistol
+				player.giveWeapon( 0xBFE256D4, 50 );
+			}
+			if ( player.data.copLevel > 2 ) {
+				// assault rifle
+				player.giveWeapon( 0xFAD1F1C9, 200 );
+			}
         } else {
             player.notify( "You are not a police officer" );
         }
